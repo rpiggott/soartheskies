@@ -7,7 +7,7 @@
 
 namespace Home\Controller;
 
-use Home\Service\HomePageContent;
+use Home\Service\HomePageContent as ServiceHomePageContent;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -20,10 +20,19 @@ class HomeController extends AbstractActionController
    */
   private $entityManager;
 
+    /**
+     * @var ServiceHomePageContent $serviceHomePageContent
+     */
+    private $serviceHomePageContent;
+
   // Constructor method is used to inject dependencies to the controller.
-  public function __construct($entityManager)
+  public function __construct(
+      $entityManager,
+      $serviceHomePageContent
+  )
   {
     $this->entityManager = $entityManager;
+    $this->serviceHomePageContent = $serviceHomePageContent;
   }
 
     public function indexAction()
@@ -31,9 +40,10 @@ class HomeController extends AbstractActionController
 
         // Render the view template
         return new ViewModel([
-          'content' => Home\Service\HomePageContent
+          'content' => $serviceHomePageContent->homePageContent()
         ]);
 
     }
+
 }
 
