@@ -22,10 +22,14 @@ class HomePageContent implements HomePageContentInterface
 
             $result = $this->entityManager->createQueryBuilder()
                                           ->from(
-                                              'Application\Entity\PageHome', 'p'
+                                             'Application\Entity\PageHome',
+                                             'p'
                                           )
                                           ->select('p.content')
-                                          ->orderBy('p.effectiveDate', 'DESC')
+                                          ->orderBy(
+                                             'p.effectiveDate',
+                                             'DESC'
+                                          )
                                           ->setMaxResults('1');
 
             $result->where('p.effectiveDate <= CURRENT_TIMESTAMP()');
@@ -33,7 +37,9 @@ class HomePageContent implements HomePageContentInterface
             $results = $result->getQuery()
                               ->getSingleResult();
 
-            return $results['content'];
+            return new ViewModel([
+                'content' => $results['content']
+            ]);
 
         } catch (\PDOException $e) {
             throw $e;
