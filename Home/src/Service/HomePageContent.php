@@ -2,7 +2,7 @@
 
 namespace Home\Service;
 
-use Application\src\Entities\PageHome as EntityPageHome;
+use Application\Entity\PageHome;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 
@@ -37,9 +37,7 @@ class HomePageContent implements HomePageContentInterface
             $results = $result->getQuery()
                               ->getSingleResult();
 
-            return new ViewModel([
-                'content' => $results['content']
-            ]);
+            return $results['content'];
 
         } catch (\PDOException $e) {
             throw $e;
