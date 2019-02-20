@@ -19,7 +19,7 @@ class HomeControllerFactory implements FactoryInterface
 
          $entityManager = $container->get('doctrine.entitymanager.orm_default');
 
-         $HomePageContent = new HomePageContent();
+         $serviceHomePageContent = new ServiceHomePageContent();
 
         // Instantiate the controller and inject dependencies
         return new HomeController(

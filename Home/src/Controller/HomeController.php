@@ -40,7 +40,7 @@ class HomeController extends AbstractActionController
 
         // Render the view template
         return new ViewModel([
-          'content' => $serviceHomePageContent->homePageContent()
+          'content' => $this->serviceHomePageContent->homePageContent()
         ]);
 
     }
