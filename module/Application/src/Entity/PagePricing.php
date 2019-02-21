@@ -32,9 +32,9 @@ class PagePricing
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="effective_date", type="datetime", nullable=true, options={"default"="now()"})
+     * @ORM\Column(name="effective_date", type="datetime", nullable=true)
      */
-    private $effectiveDate = 'now()';
+    private $effectiveDate;
 
     /**
      * @var int|null

@@ -46,9 +46,9 @@ class PictureThink
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="think_date", type="datetime", nullable=true, options={"default"="now()","comment"="UTC"})
+     * @ORM\Column(name="think_date", type="datetime", nullable=true, options={"comment"="UTC"})
      */
-    private $thinkDate = 'now()';
+    private $thinkDate;
 
 
     /**

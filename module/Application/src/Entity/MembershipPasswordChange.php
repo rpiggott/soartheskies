@@ -39,9 +39,9 @@ class MembershipPasswordChange
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="create_date", type="datetime", nullable=true, options={"default"="now()","comment"="UTC"})
+     * @ORM\Column(name="create_date", type="datetime", nullable=true, options={"comment"="UTC"})
      */
-    private $createDate = 'now()';
+    private $createDate;
 
     /**
      * @var \DateTime|null

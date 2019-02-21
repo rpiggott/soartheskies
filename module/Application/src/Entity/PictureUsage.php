@@ -39,9 +39,9 @@ class PictureUsage
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="usage_date", type="datetime", nullable=true, options={"default"="now()","comment"="UTC"})
+     * @ORM\Column(name="usage_date", type="datetime", nullable=true, options={"comment"="UTC"})
      */
-    private $usageDate = 'now()';
+    private $usageDate;
 
 
     /**

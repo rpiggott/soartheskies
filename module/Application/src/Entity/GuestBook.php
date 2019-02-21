@@ -25,9 +25,9 @@ class GuestBook
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="signed_date", type="datetime", nullable=true, options={"default"="now()"})
+     * @ORM\Column(name="signed_date", type="datetime", nullable=true)
      */
-    private $signedDate = 'now()';
+    private $signedDate;
 
     /**
      * @var string|null
@@ -71,6 +71,10 @@ class GuestBook
      */
     private $approvalDate;
 
+    public function __construct()
+    {
+        $this->signedDate = new \DateTime();
+    }
 
     /**
      * Get reference.

@@ -46,9 +46,9 @@ class PictureRating
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="rating_date", type="datetime", nullable=true, options={"default"="now()","comment"="UTC"})
+     * @ORM\Column(name="rating_date", type="datetime", nullable=true, options={"comment"="UTC"})
      */
-    private $ratingDate = 'now()';
+    private $ratingDate;
 
 
     /**

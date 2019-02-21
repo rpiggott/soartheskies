@@ -46,9 +46,9 @@ class PictureFeel
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="feel_date", type="datetime", nullable=true, options={"default"="now()","comment"="UTC"})
+     * @ORM\Column(name="feel_date", type="datetime", nullable=true, options={"comment"="UTC"})
      */
-    private $feelDate = 'now()';
+    private $feelDate;
 
 
     /**

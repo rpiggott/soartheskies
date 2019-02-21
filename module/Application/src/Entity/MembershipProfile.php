@@ -53,9 +53,9 @@ class MembershipProfile
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="account_created", type="datetime", nullable=true, options={"default"="now()"})
+     * @ORM\Column(name="account_created", type="datetime", nullable=true)
      */
-    private $accountCreated = 'now()';
+    private $accountCreated;
 
     /**
      * @var \DateTime|null
