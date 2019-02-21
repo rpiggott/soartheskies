@@ -1,0 +1,106 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle('Soar The Skies ... Coming Soon')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Le styles -->
+        <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
+            ->setAutoEscape(false)->prependStylesheet($this->basePath('css/style.css'))
+            ->setAutoEscape(false)->prependStylesheet($this->basePath('css/bootstrap_purple_theme.css'))
+            ->setAutoEscape(false)->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+        ?>
+
+        <link href="/fontawesome-free-5.7.2-web/css/all.css" rel="stylesheet">
+
+        <!-- Scripts -->
+        <?= $this->headScript()
+            ->setAutoEscape(false)->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->setAutoEscape(false)->prependFile($this->basePath('js/jquery-3.3.1.min.js'))
+        ?>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light justify-content-end" style="background-color: #DDA0DD;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+
+                <ul class="nav navbar-nav nav-pills">
+
+                    <li class="nav-item">
+                      <a class="nav-link<?php if ( strpos( $this->route , 'home') === 0 ) { echo " active"; }?>" href="<?= $this->url('home-home') ?>"><i class="fas fa-home"></i> Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link<?php if ( strpos( $this->route , 'photos') === 0 ) { echo " active"; }?>" href="<?= $this->url('photos-photos') ?>"><i class="fas fa-camera"></i> Photos</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link<?php if ( strpos( $this->route , 'kidscorner') === 0 ) { echo " active"; }?>" href="<?= $this->url('kidscorner-kidscorner') ?>"><i class="fas fa-child"></i> Kids Corner</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link<?php if ( strpos( $this->route , 'search') === 0 ) { echo " active"; }?>" href="<?= $this->url('search-search') ?>"><i class="fas fa-search"></i> Search</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link<?php if ( strpos( $this->route , 'pricing') === 0 ) { echo " active"; }?>" href="<?= $this->url('pricing-pricing') ?>"><i class="fas fa-dollar-sign"></i> Pricing</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link<?php if ( strpos( $this->route , 'support') === 0 ) { echo " active"; }?>" href="<?= $this->url('support-support') ?>"><i class="far fa-question-circle"></i> Support</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link<?php if ( strpos( $this->route , 'guestbook') === 0 ) { echo " active"; }?>" href="<?= $this->url('guestbook-guestbook') ?>"><i class="fas fa-book-open"></i> Guest Book</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link<?php if ( strpos( $this->route , 'about') === 0 ) { echo " active"; }?>" href="<?= $this->url('about-about') ?>"><i class="fas fa-info-circle"></i> About</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link<?php if ( strpos( $this->route , 'contact') === 0 ) { echo " active"; }?>" href="<?= $this->url('contact-contact') ?>"><i class="fas fa-pencil-alt"></i> Contact</a>
+                    </li>
+
+                </ul>
+
+             </div>
+        </nav>
+
+        <div class="container">
+            <?= $this->content ?>
+            <hr>
+            <footer>
+                <p class="text-center">&copy; <?= date('Y') ?> <em>Soar The Skies</em>. All rights reserved.</p>
+            </footer>
+        </div>
+        <?= $this->inlineScript() ?>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setDomains", ["*.www.soar-the-skies.net","*.soar-the-skies.net"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://analytics.soar-the-skies.net/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="https://analytics.soar-the-skies.net/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+    </body>
+</html>
+
