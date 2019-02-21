@@ -39,9 +39,9 @@ class MetaDescription
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="effective_date", type="datetime", nullable=true, options={"default"="now()","comment"="UTC"})
+     * @ORM\Column(name="effective_date", type="datetime", nullable=true, options={"comment"="UTC"})
      */
-    private $effectiveDate = 'now()';
+    private $effectiveDate;
 
 
     /**

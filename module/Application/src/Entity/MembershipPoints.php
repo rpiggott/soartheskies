@@ -46,9 +46,9 @@ class MembershipPoints
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="points_date", type="datetime", nullable=true, options={"default"="now()","comment"="UTC"})
+     * @ORM\Column(name="points_date", type="datetime", nullable=true, options={"comment"="UTC"})
      */
-    private $pointsDate = 'now()';
+    private $pointsDate;
 
 
     /**

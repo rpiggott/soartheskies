@@ -39,9 +39,9 @@ class PictureProfile
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="added_date", type="datetime", nullable=true, options={"default"="now()","comment"="UTC"})
+     * @ORM\Column(name="added_date", type="datetime", nullable=true, options={"comment"="UTC"})
      */
-    private $addedDate = 'now()';
+    private $addedDate;
 
     /**
      * @var int|null

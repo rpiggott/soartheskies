@@ -1,20 +1,24 @@
 <?php
+
 namespace Home;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Home\Service\Factory\PageHomeRepositoryFactory;
+use Home\Service\PageHomeRepository;
+use Home\Service\PageHomeRepositoryInterface;
+use Zend\Router\Http\Literal;
 
 return [
     'router' => [
         'routes' => [
 
             'home-home' => [
-                'type'    => 'Segment',
+                'type' => Literal::class,
                 'options' => [
                     // Change this to something specific to your module
-                    'route'    => '/',
+                    'route' => '/',
                     'defaults' => [
-                        'controller'    => Controller\HomeController::class,
-                        'action'        => 'index',
+                        'controller' => Controller\HomeController::class,
+                        'action' => 'index',
                     ],
                 ],
             ],
@@ -23,8 +27,11 @@ return [
     ],
     'service_manager' => [
         'factories' => [
-            'Home\Service\HomePageContent' => 'Home\Service\Factory\HomePageContentFactory',
-        ]
+            PageHomeRepository::class => PageHomeRepositoryFactory::class,
+        ],
+        'aliases' => [
+            PageHomeRepositoryInterface::class => PageHomeRepository::class,
+        ],
     ],
     'view_manager' => [
         'template_path_stack' => [
@@ -33,7 +40,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\HomeController::class => Controller\HomeControllerFactory::class
+            Controller\HomeController::class => Controller\HomeControllerFactory::class,
         ],
     ],
 ];

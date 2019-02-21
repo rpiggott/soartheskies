@@ -2,30 +2,15 @@
 
 namespace Home\Controller;
 
-use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
-use Home\Controller\HomeController;
-use Home\Service\HomePageContent as ServiceHomePageContent;
+use Home\Service\PageHomeRepositoryInterface;
+use Psr\Container\ContainerInterface;
 
-/**
- * Class HomeControllerFactory
- *
- * @package Home\Controller\Factory
- */
-class HomeControllerFactory implements FactoryInterface
+class HomeControllerFactory
 {
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container)
     {
+        $pageHomeRepository = $container->get(PageHomeRepositoryInterface::class);
 
-         $entityManager = $container->get('doctrine.entitymanager.orm_default');
-
-         $serviceHomePageContent = new ServiceHomePageContent();
-
-        // Instantiate the controller and inject dependencies
-        return new HomeController(
-            $entityManager,
-            $serviceHomePageContent
-        );
+        return new HomeController($pageHomeRepository);
     }
 }
-

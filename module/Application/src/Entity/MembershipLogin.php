@@ -46,9 +46,9 @@ class MembershipLogin
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="login_date", type="datetime", nullable=true, options={"default"="now()","comment"="UTC"})
+     * @ORM\Column(name="login_date", type="datetime", nullable=true, options={"comment"="UTC"})
      */
-    private $loginDate = 'now()';
+    private $loginDate;
 
 
     /**

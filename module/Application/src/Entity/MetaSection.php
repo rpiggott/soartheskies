@@ -32,9 +32,9 @@ class MetaSection
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="created_date", type="datetime", nullable=true, options={"default"="now()","comment"="UTC"})
+     * @ORM\Column(name="created_date", type="datetime", nullable=true, options={"comment"="UTC"})
      */
-    private $createdDate = 'now()';
+    private $createdDate;
 
 
     /**

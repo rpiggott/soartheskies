@@ -53,9 +53,9 @@ class StorePicturePackagePriceSpecial
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="created_date", type="datetime", nullable=true, options={"default"="now()"})
+     * @ORM\Column(name="created_date", type="datetime", nullable=true)
      */
-    private $createdDate = 'now()';
+    private $createdDate;
 
     /**
      * @var int|null
