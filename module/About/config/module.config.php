@@ -1,9 +1,11 @@
 <?php
 namespace About;
 
+use About\Service\Factory\PageAboutRepositoryFactory;
+use About\Service\PageAboutRepository;
+use About\Service\PageAboutRepositoryInterface;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -23,9 +25,12 @@ return [
 
         ],
     ],
-    'controllers' => [
+    'service_manager' => [
         'factories' => [
-            Controller\AboutController::class => InvokableFactory::class
+            PageAboutRepository::class => PageAboutRepositoryFactory::class,
+        ],
+        'aliases' => [
+            PageAboutRepositoryInterface::class => PageAboutRepository::class,
         ],
     ],
     'view_manager' => [
@@ -34,6 +39,11 @@ return [
         ],
         'template_map' => [
             'about/about' => __DIR__ . '/../view/about.pthml',
+        ],
+    ],
+    'controllers' => [
+        'factories' => [
+            Controller\AboutController::class => Controller\AboutControllerFactory::class,
         ],
     ],
 ];
