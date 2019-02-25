@@ -1,7 +1,12 @@
 <?php
+
 namespace GuestBook;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
+use GuestBook\Service\Factory\PageGuestBookRepositoryFactory;
+use GuestBook\Service\PageGuestBookRepository;
+use GuestBook\Service\PageGuestBookRepositoryInterface;
+use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
 
 return [
     'router' => [
@@ -21,6 +26,14 @@ return [
 
         ],
     ],
+    'service_manager' => [
+        'factories' => [
+            PageGuestBookRepository::class => PageGuestBookRepositoryFactory::class,
+        ],
+        'aliases' => [
+            PageGuestBookRepositoryInterface::class => PageGuestBookRepository::class,
+        ],
+    ],
     'view_manager' => [
         'template_path_stack' => [
             'GuestBook' => __DIR__ . '/../view',
@@ -28,7 +41,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\GuestBookController::class => InvokableFactory::class,
+            Controller\GuestBookController::class => Controller\GuestBookControllerFactory::class,
         ],
     ],
 ];
