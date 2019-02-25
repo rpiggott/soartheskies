@@ -1,14 +1,14 @@
 <?php
+
 namespace Contact;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Contact\Service\Factory\PageContactRepositoryFactory;
+use Contact\Service\PageContactRepository;
+use Contact\Service\PageContactRepositoryInterface;
+use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
 
 return [
-    'controllers' => [
-        'factories' => [
-            Controller\ContactController::class => InvokableFactory::class,
-        ],
-    ],
     'router' => [
         'routes' => [
 
@@ -26,9 +26,23 @@ return [
 
         ],
     ],
+    'service_manager' => [
+        'factories' => [
+            PageContactRepository::class => PageContactRepositoryFactory::class,
+        ],
+        'aliases' => [
+            PageContactRepositoryInterface::class => PageContactRepository::class,
+        ],
+    ],
     'view_manager' => [
         'template_path_stack' => [
             'Contact' => __DIR__ . '/../view',
+        ],
+    ],
+    'controllers' => [
+        'factories' => [
+            Controller\ContactController::class => Controller\ContactControllerFactory::class,
+
         ],
     ],
 ];

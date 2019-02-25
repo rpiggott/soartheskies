@@ -1,20 +1,25 @@
 <?php
-/**
- * @link      http://github.com/zendframework/ZendSkeletonModule for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace Contact\Controller;
 
+use Contact\Service\PageContactRepositoryInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class ContactController extends AbstractActionController
 {
+    /** @var PageContactRepositoryInterface */
+    private $pageContactRepository;
 
-    public function contactAction() {
-        return new ViewModel();
+    public function __construct(PageContactRepositoryInterface $pageContactRepository)
+    {
+        $this->pageContactRepository = $pageContactRepository;
     }
 
+    public function contactAction()
+    {
+        return new ViewModel([
+            'entry' => $this->pageContactRepository->findLatestEntry(),
+        ]);
+    }
 }
