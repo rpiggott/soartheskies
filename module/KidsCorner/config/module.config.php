@@ -1,7 +1,11 @@
 <?php
 namespace KidsCorner;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
+use KidsCorner\Service\Factory\PageKidsCornerRepositoryFactory;
+use KidsCorner\Service\PageKidsCornerRepository;
+use KidsCorner\Service\PageKidsCornerRepositoryInterface;
+use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
 
 return [
     'router' => [
@@ -21,6 +25,14 @@ return [
         ],
 
     ],
+    'service_manager' => [
+        'factories' => [
+            PageKidsCornerRepository::class => PageKidsCornerRepositoryFactory::class,
+        ],
+        'aliases' => [
+            PageKidsCornerRepositoryInterface::class => PageKidsCornerRepository::class,
+        ],
+    ],
     'view_manager' => [
         'template_path_stack' => [
             'KidsCorner' => __DIR__ . '/../view',
@@ -28,7 +40,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\KidsCornerController::class => InvokableFactory::class,
+            Controller\KidsCornerController::class => Controller\KidsCornerControllerFactory::class,
         ],
     ],
 ];
