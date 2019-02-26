@@ -1,7 +1,11 @@
 <?php
 namespace Photos;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Photos\Service\Factory\PagePhotosRepositoryFactory;
+use Photos\Service\PagePhotosRepository;
+use Photos\Service\PagePhotosRepositoryInterface;
+use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
 
 return [
     'router' => [
@@ -21,6 +25,14 @@ return [
 
         ],
     ],
+    'service_manager' => [
+        'factories' => [
+            PagePhotosRepository::class => PagePhotosRepositoryFactory::class,
+        ],
+        'aliases' => [
+            PagePhotosRepositoryInterface::class => PagePhotosRepository::class,
+        ],
+    ],
     'view_manager' => [
         'template_path_stack' => [
             'Photos' => __DIR__ . '/../view',
@@ -28,7 +40,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\PhotosController::class => InvokableFactory::class,
+            Controller\PhotosController::class => Controller\PhotosControllerFactory::class,
         ],
     ],
 ];
