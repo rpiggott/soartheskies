@@ -1,9 +1,12 @@
 <?php
+
 namespace Pricing;
 
+use Pricing\Service\Factory\PagePricingRepositoryFactory;
+use Pricing\Service\PagePricingRepository;
+use Pricing\Service\PagePricingRepositoryInterface;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -23,9 +26,12 @@ return [
 
         ],
     ],
-    'controllers' => [
+    'service_manager' => [
         'factories' => [
-            Controller\PricingController::class => InvokableFactory::class
+            PagePricingRepository::class => PagePricingRepositoryFactory::class,
+        ],
+        'aliases' => [
+            PagePricingRepositoryInterface::class => PagePricingRepository::class,
         ],
     ],
     'view_manager' => [
@@ -34,6 +40,11 @@ return [
         ],
         'template_map' => [
             'pricing/pricing' => __DIR__ . '/../view/pricing.pthml',
+        ],
+    ],
+    'controllers' => [
+        'factories' => [
+            Controller\PricingController::class => Controller\PricingControllerFactory::class,
         ],
     ],
 ];
