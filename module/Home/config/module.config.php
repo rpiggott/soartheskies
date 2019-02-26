@@ -41,7 +41,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\HomeController::class => Controller\Factory\HomeControllerFactory::class,
+            Controller\HomeController::class => Controller\HomeControllerFactory::class,
         ],
     ],
 ];
