@@ -1,1 +1,10 @@
-<p>RSS ... Under Development</p>
+<?php
+/**
+ * @var \Application\Entity\PageRss $entry
+ */
+
+?>
+
+<?php $this->headMeta("RSS ... Description Under Development", "description")->setAutoEscape(false); ?>
+
+<?= $entry->getContent(); ?>
