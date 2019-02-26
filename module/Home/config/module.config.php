@@ -6,6 +6,7 @@ use Home\Service\Factory\PageHomeRepositoryFactory;
 use Home\Service\PageHomeRepository;
 use Home\Service\PageHomeRepositoryInterface;
 use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
 
 return [
     'router' => [
