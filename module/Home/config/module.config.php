@@ -6,6 +6,7 @@ use Home\Service\Factory\PageHomeRepositoryFactory;
 use Home\Service\PageHomeRepository;
 use Home\Service\PageHomeRepositoryInterface;
 use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
 
 return [
     'router' => [
@@ -40,7 +41,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\HomeController::class => Controller\HomeControllerFactory::class,
+            Controller\HomeController::class => Controller\Factory\HomeControllerFactory::class,
         ],
     ],
 ];

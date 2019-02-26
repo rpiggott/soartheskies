@@ -20,7 +20,8 @@ class PageHomeRepository implements PageHomeRepositoryInterface
         $repository = $this->entityManager->getRepository(PageHome::class);
         $qb = $repository->createQueryBuilder('p');
         $qb->where('p.effectiveDate <= :now')
-            ->orderBy('p.effectiveDate', 'DESC');
+            ->orderBy('p.effectiveDate', 'DESC')
+            ->setMaxResults( 1 );
 
         $qb->setParameter('now', new \DateTime());
 
