@@ -1,20 +1,25 @@
 <?php
-/**
- * @link      http://github.com/zendframework/ZendSkeletonModule for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace Pricing\Controller;
 
+use Pricing\Service\PagePricingRepositoryInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class PricingController extends AbstractActionController
 {
+    /** @var PagePricingRepositoryInterface */
+    private $pagePricingRepository;
 
-    public function pricingAction() {
-        return new ViewModel();
+    public function __construct(PagePricingRepositoryInterface $pagePricingRepository)
+    {
+        $this->pagePricingRepository = $pagePricingRepository;
     }
 
+    public function pricingAction()
+    {
+        return new ViewModel([
+            'entry' => $this->pagePricingRepository->findLatestEntry(),
+        ]);
+    }
 }
