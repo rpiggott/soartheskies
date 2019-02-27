@@ -8,18 +8,18 @@ use Zend\View\Model\ViewModel;
 
 class SearchController extends AbstractActionController
 {
-    /** @var PageStoreRepositoryInterface */
-    private $pageStoreRepository;
+    /** @var PageSearchRepositoryInterface */
+    private $pageSearchRepository;
 
-    public function __construct(PageStoreRepositoryInterface $pageStoreRepository)
+    public function __construct(PageSearchRepositoryInterface $pageSearchRepository)
     {
-        $this->pageStoreRepository = $pageStoreRepository;
+        $this->pageSearchRepository = $pageSearchRepository;
     }
 
-    public function storeAction()
+    public function searchAction()
     {
         return new ViewModel([
-            'entry' => $this->pageStoreRepository->findLatestEntry(),
+            'entry' => $this->pageSearchRepository->findLatestEntry(),
         ]);
     }
 }

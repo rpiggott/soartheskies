@@ -11,7 +11,7 @@ class SearchControllerFactory
     {
         $pageSearchRepository = $container->get(PageSearchRepositoryInterface::class);
 
-        return new SearchController($pageStoreRepository);
+        return new SearchController($pageSearchRepository);
     }
 }
 

@@ -2,10 +2,10 @@
 
 namespace Search\Service;
 
-use Application\Entity\PageStore;
+use Application\Entity\PageSearch;
 use Doctrine\ORM\EntityManager;
 
-class PageStoreRepository implements PageStoreRepositoryInterface
+class PageSearchRepository implements PageSearchRepositoryInterface
 {
     /** @var EntityManager */
     private $entityManager;
@@ -15,9 +15,9 @@ class PageStoreRepository implements PageStoreRepositoryInterface
         $this->entityManager = $entityManager;
     }
 
-    public function findLatestEntry(): PageStore
+    public function findLatestEntry(): PageSearch
     {
-        $repository = $this->entityManager->getRepository(PageStore::class);
+        $repository = $this->entityManager->getRepository(PageSearch::class);
         $qb = $repository->createQueryBuilder('p');
         $qb->where('p.effectiveDate <= :now')
             ->orderBy('p.effectiveDate', 'DESC')
