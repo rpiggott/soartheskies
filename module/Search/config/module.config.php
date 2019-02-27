@@ -1,7 +1,11 @@
 <?php
 namespace Search;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Search\Service\Factory\PageStoreRepositoryFactory;
+use Search\Service\PageStoreRepository;
+use Search\Service\PageStoreRepositoryInterface;
+use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
 
 return [
     'router' => [
@@ -21,6 +25,14 @@ return [
 
         ],
     ],
+    'service_manager' => [
+        'factories' => [
+            PageSearchRepository::class => PageSearchRepositoryFactory::class,
+        ],
+        'aliases' => [
+            PageSearchRepositoryInterface::class => PageSearchRepository::class,
+        ],
+    ],
     'view_manager' => [
         'template_path_stack' => [
             'Search' => __DIR__ . '/../view',
@@ -28,7 +40,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\SearchController::class => InvokableFactory::class,
+            Controller\SearchController::class => Controller\SearchControllerFactory::class,
         ],
     ],
 ];

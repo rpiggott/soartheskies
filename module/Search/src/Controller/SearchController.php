@@ -1,21 +1,25 @@
 <?php
-/**
- * @link      http://github.com/zendframework/ZendSkeletonModule for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace Search\Controller;
 
+use Search\Service\PageSearchRepositoryInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class SearchController extends AbstractActionController
 {
+    /** @var PageStoreRepositoryInterface */
+    private $pageStoreRepository;
 
-    public function searchAction()
+    public function __construct(PageStoreRepositoryInterface $pageStoreRepository)
     {
-        return [];
+        $this->pageStoreRepository = $pageStoreRepository;
     }
 
+    public function storeAction()
+    {
+        return new ViewModel([
+            'entry' => $this->pageStoreRepository->findLatestEntry(),
+        ]);
+    }
 }
