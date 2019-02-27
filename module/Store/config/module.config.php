@@ -1,9 +1,11 @@
 <?php
 namespace Store;
 
+use Store\Service\Factory\PageStoreRepositoryFactory;
+use Store\Service\PageStoreRepository;
+use Store\Service\PageStoreRepositoryInterface;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -23,9 +25,12 @@ return [
 
         ],
     ],
-    'controllers' => [
+    'service_manager' => [
         'factories' => [
-            Controller\StoreController::class => InvokableFactory::class
+            PageStoreRepository::class => PageStoreRepositoryFactory::class,
+        ],
+        'aliases' => [
+            PageStoreRepositoryInterface::class => PageStoreRepository::class,
         ],
     ],
     'view_manager' => [
@@ -34,6 +39,11 @@ return [
         ],
         'template_map' => [
             'store/store' => __DIR__ . '/../view/store.pthml',
+        ],
+    ],
+    'controllers' => [
+        'factories' => [
+            Controller\StoreController::class => Controller\StoreControllerFactory::class,
         ],
     ],
 ];
