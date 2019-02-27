@@ -1,9 +1,9 @@
 <?php
 namespace Search;
 
-use Search\Service\Factory\PageStoreRepositoryFactory;
-use Search\Service\PageStoreRepository;
-use Search\Service\PageStoreRepositoryInterface;
+use Search\Service\Factory\PageSearchRepositoryFactory;
+use Search\Service\PageSearchRepository;
+use Search\Service\PageSearchRepositoryInterface;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 
