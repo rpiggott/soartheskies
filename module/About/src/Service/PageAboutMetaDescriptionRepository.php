@@ -17,7 +17,7 @@ class PageAboutMetaDescriptionRepository implements PageAboutMetaDescriptionRepo
 
     public function findLatestEntry(): PageAboutMetaDescription
     {
-        $repository = $this->entityManager->getRepository(PageAbout::class);
+        $repository = $this->entityManager->getRepository(PageAboutMetaDescription::class);
         $qb = $repository->createQueryBuilder('p');
         $qb->where('p.effectiveDate <= :now')
             ->orderBy('p.effectiveDate', 'DESC')

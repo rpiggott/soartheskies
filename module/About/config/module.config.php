@@ -6,6 +6,7 @@ use About\Service\Factory\PageAboutMetaDescriptionRepositoryFactory;
 use About\Service\PageAboutRepository;
 use About\Service\PageAboutMetaDescriptionRepository;
 use About\Service\PageAboutRepositoryInterface;
+use About\Service\PageAboutMetaDescriptionRepositoryInterface;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 

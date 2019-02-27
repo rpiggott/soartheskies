@@ -6,7 +6,7 @@
 
 ?>
 
-<?php $this->headMeta($metaDescription, "description")->setAutoEscape(false); ?>
+<?php $this->headMeta($metaDescription->getContent(), "description")->setAutoEscape(false); ?>
 
 <?= $content->getContent(); ?>
 
