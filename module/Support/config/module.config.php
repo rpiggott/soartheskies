@@ -1,7 +1,12 @@
 <?php
+
 namespace Support;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Support\Service\Factory\PageSupportRepositoryFactory;
+use Support\Service\PageSupportRepository;
+use Support\Service\PageSupportRepositoryInterface;
+use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
 
 return [
     'router' => [
@@ -21,6 +26,14 @@ return [
 
         ],
     ],
+    'service_manager' => [
+        'factories' => [
+            PageSupportRepository::class => PageSupportRepositoryFactory::class,
+        ],
+        'aliases' => [
+            PageSupportRepositoryInterface::class => PageSupportRepository::class,
+        ],
+    ],
     'view_manager' => [
         'template_path_stack' => [
             'Support' => __DIR__ . '/../view',
@@ -28,7 +41,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\SupportController::class => InvokableFactory::class,
+            Controller\SupportController::class => Controller\SupportControllerFactory::class,
         ],
     ],
 ];

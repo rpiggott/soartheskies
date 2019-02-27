@@ -1,21 +1,25 @@
 <?php
-/**
- * @link      http://github.com/zendframework/ZendSkeletonModule for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace Support\Controller;
 
+use Support\Service\PageSupportRepositoryInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class SupportController extends AbstractActionController
 {
+    /** @var PageSupportRepositoryInterface */
+    private $pageSupportRepository;
+
+    public function __construct(PageSupportRepositoryInterface $pageSupportRepository)
+    {
+        $this->pageSupportRepository = $pageSupportRepository;
+    }
 
     public function supportAction()
     {
-        return [];
+        return new ViewModel([
+            'entry' => $this->pageSupportRepository->findLatestEntry(),
+        ]);
     }
-
 }
