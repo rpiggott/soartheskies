@@ -5,12 +5,12 @@ namespace Application\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * PageAboutMetaDescription
+ * PageRss
  *
- * @ORM\Table(name="page_about_meta_description", uniqueConstraints={@ORM\UniqueConstraint(name="page_about_meta_description_reference_unique", columns={"reference"})})
+ * @ORM\Table(name="page_rss", uniqueConstraints={@ORM\UniqueConstraint(name="page_rss_reference_unique", columns={"reference"})})
  * @ORM\Entity
  */
-class PageAboutMetaDescription
+class PageRss
 {
     /**
      * @var int
@@ -18,7 +18,7 @@ class PageAboutMetaDescription
      * @ORM\Column(name="reference", type="bigint", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="page_about_meta_description_reference_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="page_rss_reference_seq", allocationSize=1, initialValue=1)
      */
     private $reference;
 
@@ -59,7 +59,7 @@ class PageAboutMetaDescription
      *
      * @param string|null $content
      *
-     * @return PageAboutMetaDescription
+     * @return PageRss
      */
     public function setContent($content = null)
     {
@@ -83,7 +83,7 @@ class PageAboutMetaDescription
      *
      * @param \DateTime|null $effectiveDate
      *
-     * @return PageAboutMetaDescription
+     * @return PageRss
      */
     public function setEffectiveDate($effectiveDate = null)
     {
@@ -107,7 +107,7 @@ class PageAboutMetaDescription
      *
      * @param int|null $membershipReference
      *
-     * @return PageAboutMetaDescription
+     * @return PageRss
      */
     public function setMembershipReference($membershipReference = null)
     {

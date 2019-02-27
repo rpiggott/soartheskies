@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="page_kids_corner_meta_description", uniqueConstraints={@ORM\UniqueConstraint(name="page_kids_corner_meta_description_reference_unique", columns={"reference"})})
  * @ORM\Entity
  */
-class Pagekids_corner
+class PageKidsCornerMetaDescription
 {
     /**
      * @var int
@@ -59,7 +59,7 @@ class Pagekids_corner
      *
      * @param string|null $content
      *
-     * @return Pagekids_corner
+     * @return PageKidsCornerMetaDescription
      */
     public function setContent($content = null)
     {
@@ -83,7 +83,7 @@ class Pagekids_corner
      *
      * @param \DateTime|null $effectiveDate
      *
-     * @return Pagekids_corner
+     * @return PageKidsCornerMetaDescription
      */
     public function setEffectiveDate($effectiveDate = null)
     {
@@ -107,7 +107,7 @@ class Pagekids_corner
      *
      * @param int|null $membershipReference
      *
-     * @return Pagekids_corner
+     * @return PageKidsCornerMetaDescription
      */
     public function setMembershipReference($membershipReference = null)
     {
