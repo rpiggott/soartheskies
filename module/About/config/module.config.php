@@ -2,7 +2,9 @@
 namespace About;
 
 use About\Service\Factory\PageAboutRepositoryFactory;
+use About\Service\Factory\PageAboutMetaDescriptionRepositoryFactory;
 use About\Service\PageAboutRepository;
+use About\Service\PageAboutMetaDescriptionRepository;
 use About\Service\PageAboutRepositoryInterface;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
@@ -28,9 +30,11 @@ return [
     'service_manager' => [
         'factories' => [
             PageAboutRepository::class => PageAboutRepositoryFactory::class,
+            PageAboutMetaDescriptionRepository::class => PageAboutMetaDescriptionRepositoryFactory::class,
         ],
         'aliases' => [
             PageAboutRepositoryInterface::class => PageAboutRepository::class,
+            PageAboutMetaDescriptionRepositoryInterface::class => PageAboutMetaDescriptionRepository::class,
         ],
     ],
     'view_manager' => [
