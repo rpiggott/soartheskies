@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Entity;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,9 +32,16 @@ class MetaKeyword
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="effective_date", type="datetime", nullable=true, options={"comment"="UTC"})
+     * @ORM\Column(name="effective_date", type="datetimetz", nullable=true, options={"default"="now()","comment"="UTC"})
      */
-    private $effectiveDate;
+    private $effectiveDate = 'now()';
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="membership_reference", type="bigint", nullable=true)
+     */
+    private $membershipReference;
 
 
     /**
@@ -93,5 +100,29 @@ class MetaKeyword
     public function getEffectiveDate()
     {
         return $this->effectiveDate;
+    }
+
+    /**
+     * Set membershipReference.
+     *
+     * @param int|null $membershipReference
+     *
+     * @return MetaKeyword
+     */
+    public function setMembershipReference($membershipReference = null)
+    {
+        $this->membershipReference = $membershipReference;
+
+        return $this;
+    }
+
+    /**
+     * Get membershipReference.
+     *
+     * @return int|null
+     */
+    public function getMembershipReference()
+    {
+        return $this->membershipReference;
     }
 }
