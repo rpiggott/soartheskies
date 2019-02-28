@@ -1,10 +1,12 @@
 <?php
 /**
- * @var \Application\Entity\PagePhotos $entry
+ * @var \Application\Entity\PageKidsCorner $content
+ * @var \Application\Entity\PageKidsCornerMetaDescription $metaDescription
  */
 
 ?>
 
-<?php $this->headMeta("Kid's Corner ... Description Under Development", "description")->setAutoEscape(false); ?>
+<?php $this->headMeta($metaDescription->getContent(), "description")->setAutoEscape(false); ?>
 
-<?= $entry->getContent(); ?>
+<?= $content->getContent(); ?>
+

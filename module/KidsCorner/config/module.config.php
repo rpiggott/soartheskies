@@ -2,8 +2,11 @@
 namespace KidsCorner;
 
 use KidsCorner\Service\Factory\PageKidsCornerRepositoryFactory;
+use KidsCorner\Service\Factory\PageKidsCornerMetaDescriptionRepositoryFactory;
 use KidsCorner\Service\PageKidsCornerRepository;
+use KidsCorner\Service\PageKidsCornerMetaDescriptionRepository;
 use KidsCorner\Service\PageKidsCornerRepositoryInterface;
+use KidsCorner\Service\PageKidsCornerMetaDescriptionRepositoryInterface;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 
@@ -28,9 +31,11 @@ return [
     'service_manager' => [
         'factories' => [
             PageKidsCornerRepository::class => PageKidsCornerRepositoryFactory::class,
+            PageKidsCornerMetaDescriptionRepository::class => PageKidsCornerMetaDescriptionRepositoryFactory::class,
         ],
         'aliases' => [
             PageKidsCornerRepositoryInterface::class => PageKidsCornerRepository::class,
+            PageKidsCornerMetaDescriptionRepositoryInterface::class => PageKidsCornerMetaDescriptionRepository::class,
         ],
     ],
     'view_manager' => [
