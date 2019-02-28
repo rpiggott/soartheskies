@@ -3,8 +3,11 @@
 namespace Home;
 
 use Home\Service\Factory\PageHomeRepositoryFactory;
+use Home\Service\Factory\PageHomeMetaDescriptionRepositoryFactory;
 use Home\Service\PageHomeRepository;
+use Home\Service\PageHomeMetaDescriptionRepository;
 use Home\Service\PageHomeRepositoryInterface;
+use Home\Service\PageHomeMetaDescriptionRepositoryInterface;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 
@@ -29,9 +32,11 @@ return [
     'service_manager' => [
         'factories' => [
             PageHomeRepository::class => PageHomeRepositoryFactory::class,
+            PageHomeMetaDescriptionRepository::class => PageHomeMetaDescriptionRepositoryFactory::class,
         ],
         'aliases' => [
             PageHomeRepositoryInterface::class => PageHomeRepository::class,
+            PageHomeMetaDescriptionRepositoryInterface::class => PageHomeMetaDescriptionRepository::class,
         ],
     ],
     'view_manager' => [

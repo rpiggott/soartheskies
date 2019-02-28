@@ -2,10 +2,10 @@
 
 namespace Home\Service;
 
-use Application\Entity\PageHome;
+use Application\Entity\PageHomeMetaDescription;
 use Doctrine\ORM\EntityManager;
 
-class PageHomeRepository implements PageHomeRepositoryInterface
+class PageHomeMetaDescriptionRepository implements PageHomeMetaDescriptionRepositoryInterface
 {
     /** @var EntityManager */
     private $entityManager;
@@ -15,9 +15,9 @@ class PageHomeRepository implements PageHomeRepositoryInterface
         $this->entityManager = $entityManager;
     }
 
-    public function findLatestEntry(): PageHome
+    public function findLatestEntry(): PageHomeMetaDescription
     {
-        $repository = $this->entityManager->getRepository(PageHome::class);
+        $repository = $this->entityManager->getRepository(PageHomeMetaDescription::class);
         $qb = $repository->createQueryBuilder('p');
         $qb->where('p.effectiveDate <= :now')
             ->orderBy('p.effectiveDate', 'DESC')
@@ -28,3 +28,4 @@ class PageHomeRepository implements PageHomeRepositoryInterface
         return $qb->getQuery()->getSingleResult();
     }
 }
+
