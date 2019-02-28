@@ -1,11 +1,12 @@
 <?php
 /**
- * @var \Application\Entity\PageStore $entry
+ * @var \Application\Entity\PageStore $content
+ * @var \Application\Entity\PageStoreMetaDescription $metaDescription
  */
 
 ?>
 
-<?php $this->headMeta("Store ... Description Under Development", "description")->setAutoEscape(false); ?>
+<?php $this->headMeta($metaDescription->getContent(), "description")->setAutoEscape(false); ?>
 
-<?= $entry->getContent(); ?>
+<?= $content->getContent(); ?>
 

@@ -2,8 +2,11 @@
 namespace Store;
 
 use Store\Service\Factory\PageStoreRepositoryFactory;
+use Store\Service\Factory\PageStoreMetaDescriptionRepositoryFactory;
 use Store\Service\PageStoreRepository;
+use Store\Service\PageStoreMetaDescriptionRepository;
 use Store\Service\PageStoreRepositoryInterface;
+use Store\Service\PageStoreMetaDescriptionRepositoryInterface;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 
@@ -28,9 +31,11 @@ return [
     'service_manager' => [
         'factories' => [
             PageStoreRepository::class => PageStoreRepositoryFactory::class,
+            PageStoreMetaDescriptionRepository::class => PageStoreMetaDescriptionRepositoryFactory::class,
         ],
         'aliases' => [
             PageStoreRepositoryInterface::class => PageStoreRepository::class,
+            PageStoreMetaDescriptionRepositoryInterface::class => PageStoreMetaDescriptionRepository::class,
         ],
     ],
     'view_manager' => [
