@@ -1,11 +1,12 @@
 <?php
 /**
- * @var \Application\Entity\PageGuestBook $entry
+ * @var \Application\Entity\PageGuestBook $content
+ * @var \Application\Entity\PageGuestBookMetaDescription $metaDescription
  */
 
 ?>
 
-<?php $this->headMeta("Guest Book ... Description Under Development", "description")->setAutoEscape(false); ?>
+<?php $this->headMeta($metaDescription->getContent(), "description")->setAutoEscape(false); ?>
 
-<?= $entry->getContent(); ?>
+<?= $content->getContent(); ?>
 
