@@ -1,11 +1,12 @@
 <?php
 /**
- * @var \Application\Entity\PagePhotos $entry
+ * @var \Application\Entity\PagePhotos $content
+ * @var \Application\Entity\PagePhotosMetaDescription $metaDescription
  */
 
 ?>
 
-<?php $this->headMeta("Photos ... Description Under Development", "description")->setAutoEscape(false); ?>
+<?php $this->headMeta($metaDescription->getContent(), "description")->setAutoEscape(false); ?>
 
-<?= $entry->getContent(); ?>
+<?= $content->getContent(); ?>
 
