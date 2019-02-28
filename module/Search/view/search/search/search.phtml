@@ -1,11 +1,12 @@
 <?php
 /**
- * @var \Application\Entity\PageSearch $entry
+ * @var \Application\Entity\PageSearch $content
+ * @var \Application\Entity\PageSearchMetaDescription $metaDescription
  */
 
 ?>
 
-<?php $this->headMeta("Search ... Description Under Development", "description")->setAutoEscape(false); ?>
+<?php $this->headMeta($metaDescription->getContent(), "description")->setAutoEscape(false); ?>
 
-<?= $entry->getContent(); ?>
+<?= $content->getContent(); ?>
 

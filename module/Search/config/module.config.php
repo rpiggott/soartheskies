@@ -3,8 +3,11 @@
 namespace Search;
 
 use Search\Service\Factory\PageSearchRepositoryFactory;
+use Search\Service\Factory\PageSearchMetaDescriptionRepositoryFactory;
 use Search\Service\PageSearchRepository;
+use Search\Service\PageSearchMetaDescriptionRepository;
 use Search\Service\PageSearchRepositoryInterface;
+use Search\Service\PageSearchMetaDescriptionRepositoryInterface;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 
@@ -29,9 +32,11 @@ return [
     'service_manager' => [
         'factories' => [
             PageSearchRepository::class => PageSearchRepositoryFactory::class,
+            PageSearchMetaDescriptionRepository::class => PageSearchMetaDescriptionRepositoryFactory::class,
         ],
         'aliases' => [
             PageSearchRepositoryInterface::class => PageSearchRepository::class,
+            PageSearchMetaDescriptionRepositoryInterface::class => PageSearchMetaDescriptionRepository::class,
         ],
     ],
     'view_manager' => [
