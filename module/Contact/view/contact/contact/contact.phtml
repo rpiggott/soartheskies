@@ -1,10 +1,11 @@
 <?php
 /**
- * @var \Application\Entity\PageContact $entry
+ * @var \Application\Entity\PageContact $content
+ * @var \Application\Entity\PageContentMetaDescription $metaDescription
  */
 
 ?>
 
-<?php $this->headMeta("Contact ... Description Under Development", "description")->setAutoEscape(false); ?>
+<?php $this->headMeta($metaDescription->getContent(), "description")->setAutoEscape(false); ?>
 
-<?= $entry->getContent(); ?>
+<?= $content->getContent(); ?>
