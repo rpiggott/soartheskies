@@ -1,10 +1,12 @@
 <?php
 /**
- * @var \Application\Entity\PageSupport $entry
+ * @var \Application\Entity\PageSupport $content
+ * @var \Application\Entity\PageSupportMetaDescription $metaDescription
  */
 
 ?>
 
-<?php $this->headMeta("Support ... Description Under Development", "description")->setAutoEscape(false); ?>
+<?php $this->headMeta($metaDescription->getContent(), "description")->setAutoEscape(false); ?>
 
-<?= $entry->getContent(); ?>
+<?= $content->getContent(); ?>
+
