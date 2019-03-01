@@ -1,12 +1,15 @@
 <?php
 /**
+ * @var \Application\Entity\MetaKeyword $metaKeyword
  * @var \Application\Entity\PageAbout $content
  * @var \Application\Entity\PageAboutMetaDescription $metaDescription
+ * @var \Application\Entity\PageAboutKeywordLink $metaKeywordLink
  */
 
 ?>
 
 <?php $this->headMeta($metaDescription->getContent(), "description")->setAutoEscape(false); ?>
+<?php $this->headMeta($metaKeyword->getContent(), "keyword")->setAutoEscape(false); ?>
 
 <?= $content->getContent(); ?>
 
