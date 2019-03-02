@@ -20,6 +20,9 @@ class PageAboutMetaKeywordRepository implements PageAboutMetaKeywordRepositoryIn
 
     public function findKeywordList(): PageAboutMetaKeyword
     {
+
+        $keyword_list = null;
+
         $query = $this->entityManager->createQueryBuilder()
                       ->select('k.keyword')
                       ->from(
@@ -41,9 +44,12 @@ class PageAboutMetaKeywordRepository implements PageAboutMetaKeywordRepositoryIn
                         ->getArrayResult();
 
         if ( is_array( $result ) && count( $result ) > '0' ) {
-            foreach ( $result AS $value ) {
+            foreach ( $result AS $key => $value ) {
 
-                $keyword_list .= $value['keyword'] . ' ';
+                $keyword_list .= $value['keyword'];
+                if ( $key != ( (int)count( $result ) - 1 ) ) {
+                    $keyword_list .= ", ";
+                }
 
             }
         }
