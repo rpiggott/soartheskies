@@ -20,17 +20,34 @@ class PageAboutMetaKeywordRepository implements PageAboutMetaKeywordRepositoryIn
 
     public function findKeywordList(): PageAboutMetaKeyword
     {
-        $repository1 = $this->entityManager->getRepository(MetaKeyword::class);
-        $repository2 = $this->entityManager->getRepository(PageAboutMetaKeywordLink::class);
+        $query = $this->entityManager->createQueryBuilder()
+                      ->select('k.keyword')
+                      ->from(
+                          'Application\Entity\MetaKeyword',
+                          'k'
+                      )
+                      ->innerJoin(
+                          'Application\Entity\PageAboutMetaKeywordLink',
+                          'l',
+                          'WITH',
+                          'k.reference = l.metaKeywordReference'
+                      );
 
-        $qb = $repository1->createQueryBuilder('k');
-        $qb->$repository2->createQueryBuilder('l');
+        $query->andWhere('l.removeDate is null');
 
-        $qb->select('k.keyword')
-           ->innerJoin('k.reference = l.metaKeywordReference')
-           ->where('l.removeDate is null')
-            ->orderBy('k.keyword', 'ASC');
+        $query->orderBy('k.keyword' , 'ASC');
 
-        return $qb->getQuery()->getArrayResult();
+        $result = $query->getQuery()
+                        ->getArrayResult();
+
+        if ( is_array( $result ) && count( $result ) > '0' ) {
+            foreach ( $result AS $value ) {
+
+                $keyword_list .= $value['keyword'] . ' ';
+
+            }
+        }
+
+        return $keyword_list;
     }
 }
