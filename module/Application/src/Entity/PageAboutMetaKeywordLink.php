@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class PageAboutMetaKeywordLink
 {
     /**
+     * @ORM\ManyToOne(targetEntity="MetaKeyword")
+     * @ORM\JoinColumn(name="meta_keyword_reference", referencedColumnName="reference")
+     **/
+    private $parentMetaKeywordReference;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="reference", type="bigint", nullable=false)
