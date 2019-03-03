@@ -4,7 +4,7 @@ namespace About\Controller;
 
 use About\Service\PageAboutRepositoryInterface;
 use About\Service\PageAboutMetaDescriptionRepositoryInterface;
-use About\Service\PageAboutMetaKeywordRepositoryInterface;
+use About\Service\PageAboutMetaKeywordLinkRepositoryInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -16,18 +16,18 @@ class AboutController extends AbstractActionController
     /** @var PageAboutMetaDescriptionRepositoryInterface */
     private $pageAboutMetaDescriptionRepository;
 
-    /** @var PageAboutMetaKeywordRepositoryInterface */
-    private $pageAboutMetaKeywordRepository;
+    /** @var PageAboutMetaKeywordLinkRepositoryInterface */
+    private $pageAboutMetaKeywordLinkRepository;
 
     public function __construct(
         PageAboutRepositoryInterface $pageAboutRepository,
         PageAboutMetaDescriptionRepositoryInterface $pageAboutMetaDescriptionRepository,
-        PageAboutMetaKeywordRepositoryInterface $pageAboutMetaKeywordRepository
+        PageAboutMetaKeywordLinkRepositoryInterface $pageAboutMetaKeywordLinkRepository
     )
     {
         $this->pageAboutRepository = $pageAboutRepository;
         $this->pageAboutMetaDescriptionRepository = $pageAboutMetaDescriptionRepository;
-        $this->pageAboutMetaKeywordRepository = $pageAboutMetaKeywordRepository;
+        $this->pageAboutMetaKeywordLinkRepository = $pageAboutMetaKeywordLinkRepository;
     }
 
     public function aboutAction()
@@ -35,8 +35,7 @@ class AboutController extends AbstractActionController
         return new ViewModel([
             'content' => $this->pageAboutRepository->findLatestEntry(),
             'metaDescription' => $this->pageAboutMetaDescriptionRepository->findLatestEntry(),
-            'metaKeyword' => $this->pageAboutMetaKeywordRepository->findKeywordList(),
+            'metaKeyword' => $this->pageAboutMetaKeywordLinkRepository->findKeywordList(),
         ]);
     }
 }
-

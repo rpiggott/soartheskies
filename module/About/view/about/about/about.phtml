@@ -9,7 +9,7 @@
 ?>
 
 <?php $this->headMeta($metaDescription->getContent(), "description")->setAutoEscape(false); ?>
-<?php $this->headMeta($metaKeyword->getContent(), "keyword")->setAutoEscape(false); ?>
+<?php $this->headMeta($metaKeyword->getMetaKeywordReference(), "keyword")->setAutoEscape(false); ?>
 
 <?= $content->getContent(); ?>
 

@@ -4,7 +4,7 @@ namespace About\Controller;
 
 use About\Service\PageAboutRepositoryInterface;
 use About\Service\PageAboutMetaDescriptionRepositoryInterface;
-use About\Service\PageAboutMetaKeywordRepositoryInterface;
+use About\Service\PageAboutMetaKeywordLinkRepositoryInterface;
 use Psr\Container\ContainerInterface;
 
 class AboutControllerFactory
@@ -13,13 +13,12 @@ class AboutControllerFactory
     {
         $pageAboutRepository = $container->get(PageAboutRepositoryInterface::class);
         $pageAboutMetaDescriptionRepository = $container->get(PageAboutMetaDescriptionRepositoryInterface::class);
-        $pageAboutMetaKeywordRepository = $container->get(PageAboutMetaKeywordRepositoryInterface::class);
+        $pageAboutMetaKeywordLinkRepository = $container->get(PageAboutMetaKeywordLinkRepositoryInterface::class);
 
         return new AboutController(
             $pageAboutRepository,
             $pageAboutMetaDescriptionRepository,
-            $pageAboutMetaKeywordRepository
+            $pageAboutMetaKeywordLinkRepository
         );
     }
 }
-

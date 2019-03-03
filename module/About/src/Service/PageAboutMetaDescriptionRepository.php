@@ -3,6 +3,7 @@
 namespace About\Service;
 
 use Application\Entity\PageAboutMetaDescription;
+use Application\Entity\MetaKeyword;
 use Doctrine\ORM\EntityManager;
 
 class PageAboutMetaDescriptionRepository implements PageAboutMetaDescriptionRepositoryInterface

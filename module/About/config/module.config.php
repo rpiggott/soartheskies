@@ -3,13 +3,13 @@ namespace About;
 
 use About\Service\Factory\PageAboutRepositoryFactory;
 use About\Service\Factory\PageAboutMetaDescriptionRepositoryFactory;
-use About\Service\Factory\PageAboutMetaKeywordRepositoryFactory;
+use About\Service\Factory\PageAboutMetaKeywordLinkRepositoryFactory;
 use About\Service\PageAboutRepository;
 use About\Service\PageAboutMetaDescriptionRepository;
-use About\Service\PageAboutMetaKeywordRepository;
+use About\Service\PageAboutMetaKeywordLinkRepository;
 use About\Service\PageAboutRepositoryInterface;
 use About\Service\PageAboutMetaDescriptionRepositoryInterface;
-use About\Service\PageAboutMetaKeywordRepositoryInterface;
+use About\Service\PageAboutMetaKeywordLinkRepositoryInterface;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 
@@ -35,12 +35,12 @@ return [
         'factories' => [
             PageAboutRepository::class => PageAboutRepositoryFactory::class,
             PageAboutMetaDescriptionRepository::class => PageAboutMetaDescriptionRepositoryFactory::class,
-            PageAboutMetaKeywordRepository::class => PageAboutMetaKeywordRepositoryFactory::class,
+            PageAboutMetaKeywordLinkRepository::class => PageAboutMetaKeywordLinkRepositoryFactory::class,
         ],
         'aliases' => [
             PageAboutRepositoryInterface::class => PageAboutRepository::class,
             PageAboutMetaDescriptionRepositoryInterface::class => PageAboutMetaDescriptionRepository::class,
-            PageAboutMetaKeywordRepositoryInterface::class => PageAboutMetaKeywordRepository::class,
+            PageAboutMetaKeywordLinkRepositoryInterface::class => PageAboutMetaKeywordLinkRepository::class,
         ],
     ],
     'view_manager' => [
