@@ -31,7 +31,7 @@ class PageAboutMetaKeywordLink
     /**
      * @var int|null
      *
-     * @ORM\OneToMany(targetEntity="\Application\Entity\MetaKeyword")
+     * @ORM\OneToMany(targetEntity="\Application\Entity\MetaKeywords")
      * @ORM\JoinColumn(name="meta_keyword_reference", referencedColumnName="reference")
      * @ORM\Column(name="meta_keyword_reference", type="bigint", nullable=true)
      */
