@@ -22,7 +22,7 @@ class PageAboutMetaKeywordLinkRepository implements PageAboutMetaKeywordLinkRepo
         $qb = $repository->createQueryBuilder('l');
                       $qb->join('\Application\Entity\MetaKeywords' , 'k', 'WITH', 'k.reference = l.metaKeywordReference');
                       $qb->expr()->isNull('l.removeDate');
-
+print_r( $qb->getQuery()->getSingleResult() );
         return $qb->getQuery()->getSingleResult();
     }
 }
