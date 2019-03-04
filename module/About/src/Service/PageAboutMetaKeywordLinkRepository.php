@@ -2,7 +2,6 @@
 
 namespace About\Service;
 
-use Application\Entity\MetaKeyword;
 use Application\Entity\PageAboutMetaKeywordLink;
 use Doctrine\ORM\EntityManager;
 
@@ -21,7 +20,7 @@ class PageAboutMetaKeywordLinkRepository implements PageAboutMetaKeywordLinkRepo
         $repository = $this->entityManager->getRepository(PageAboutMetaKeywordLink::class);
 
         $qb = $repository->createQueryBuilder('l');
-                      $qb->join('\Application\Entity\MetaKeyword' , 'k', 'WITH', 'k.reference = l.metaKeywordReference');
+                      $qb->join('\Application\Entity\MetaKeywords' , 'k', 'WITH', 'k.reference = l.metaKeywordReference');
                       $qb->expr()->isNull('l.removeDate');
 
         return $qb->getQuery()->getSingleResult();
