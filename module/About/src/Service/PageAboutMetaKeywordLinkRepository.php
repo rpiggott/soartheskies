@@ -19,13 +19,10 @@ class PageAboutMetaKeywordLinkRepository implements PageAboutMetaKeywordLinkRepo
     public function findKeywordList(): PageAboutMetaKeywordLink
     {
         $repository = $this->entityManager->getRepository(PageAboutMetaKeywordLink::class);
-        $keywords = $this->entityManager->getRepository(MetaKeyword::class);
 
         $qb = $repository->createQueryBuilder('l');
-                     $qb ->join('\Application\Entity\MetaKeyword' , 'k')
-                         ->expr()->isNull('l.removeDate');
-
-        print_r( $qb->getQuery()->getSingleResult() );
+                      $qb->join('\Application\Entity\MetaKeyword' , 'k', 'WITH', 'k.reference = l.metaKeywordReference');
+                      $qb->expr()->isNull('l.removeDate');
 
         return $qb->getQuery()->getSingleResult();
     }
