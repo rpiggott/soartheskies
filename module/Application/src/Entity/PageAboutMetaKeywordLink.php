@@ -14,6 +14,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PageAboutMetaKeywordLink
 {
+    public function __construct()
+    {
+        $this->metaKeywordReference = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * @var int
      *
@@ -27,7 +32,7 @@ class PageAboutMetaKeywordLink
     /**
      * @var int|null
      *
-     * @ORM\ManyToOne(targetEntity="MetaKeyword")
+     * @ORM\OneToMany(targetEntity="\Application\Entity\MetaKeyword")
      * @ORM\JoinColumn(name="meta_keyword_reference", referencedColumnName="reference")
      * @ORM\Column(name="meta_keyword_reference", type="bigint", nullable=true)
      */
