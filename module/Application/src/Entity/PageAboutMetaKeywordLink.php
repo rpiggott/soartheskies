@@ -1,6 +1,8 @@
 <?php
 
 namespace Application\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Application\Entity\MetaKeyword;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,12 +14,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PageAboutMetaKeywordLink
 {
-    /**
-     * @ORM\ManyToOne(targetEntity="MetaKeyword")
-     * @ORM\JoinColumn(name="meta_keyword_reference", referencedColumnName="reference")
-     **/
-    private $parentMetaKeywordReference;
-
     /**
      * @var int
      *
@@ -31,6 +27,8 @@ class PageAboutMetaKeywordLink
     /**
      * @var int|null
      *
+     * @ORM\ManyToOne(targetEntity="MetaKeyword")
+     * @ORM\JoinColumn(name="meta_keyword_reference", referencedColumnName="reference")
      * @ORM\Column(name="meta_keyword_reference", type="bigint", nullable=true)
      */
     private $metaKeywordReference;
